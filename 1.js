@@ -2,6 +2,7 @@ var http=require('http');
 var serve=http.createServer();
 serve.on('request',function(request,response){
     console.log('收到请求来自'+request.url)
+    console.log('请求我的客户端的地址是：', request.socket.remoteAddress, request.socket.remotePort)
     var products=[
         {
             name:'张三',
