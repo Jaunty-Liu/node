@@ -11,6 +11,7 @@ serve.on('request',function(request,response){
             id:'111'
         }
     ]
+    response.setHeader("Content-type","application/json")
     response.end(JSON.stringify(products))
 })
 serve.listen(3000,function(){
