@@ -6,3 +6,4 @@ serve.on('request',function(){
 serve.listen(3000,function(){
     console.log('输出')
 })
+console.log(123)
