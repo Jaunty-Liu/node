@@ -1,18 +1,14 @@
-// const { chunk } = require("underscore");
-
 var fs=require('fs');
-var data='';
-var readStream=fs.createReadStream('test1.txt');
-readStream.setEncoding('UTF8');
-readStream.on('data',(chunk)=>{
-   data+=chunk;
-});
-readStream.on('end',function(){
-   console.log(data);
+var data='Batman!!!Batman!!!!!';
+var writeStream=fs.createWriteStream('test1.txt');
+writeStream.write(data,'utf-8');
+writeStream.end();
+writeStream.on('finish', function() {
+   console.log("写入完成。");
 });
 
-readStream.on('error', function(err){
-   console.log(err.stack);
+writeStream.on('error', function(err){
+  console.log(err.stack);
 });
 
 console.log("程序执行完毕");
