@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Jaunty-Liu/node#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
