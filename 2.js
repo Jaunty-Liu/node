@@ -1,2 +1,2 @@
-var buf=Buffer.from('hello','ascii');
-console.log(buf)
+var buf1=Buffer.alloc(10,1);
+console.log(buf1);
