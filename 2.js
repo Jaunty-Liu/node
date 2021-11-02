@@ -1,5 +1,3 @@
-var buf1=Buffer.alloc(10,1);
-console.log(buf1);
-var buf2=Buffer.allocUnsafe(10,);
-console.log(buf2);
-console.log(buf2.toString());
+const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
+const json = JSON.stringify(buf);
+console.log(json);
