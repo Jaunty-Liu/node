@@ -1,11 +1,8 @@
-var fs = require("fs");
-
-// 异步打开文件
-console.log("准备打开文件！");
-fs.open('test1.txt', 'r+', function(err, fd) {
-   if (err) {
-       return console.error(err);
-   }
-   console.log(fd);
-  console.log("文件打开成功！");
-});
+var http = require('http');
+var url = require('url');
+var util = require('util');
+ 
+http.createServer(function(req, res){
+    res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
+    res.end(util.inspect(url.parse(req.url, true)));
+}).listen(3000);
