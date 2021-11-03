@@ -1,23 +1,13 @@
-var util = require('util'); 
-function Base() { 
-    this.name = 'base'; 
-    this.base = 1991; 
-    this.sayHello = function() { 
-    	console.log('Hello ' + this.name); 
-    }; 
-} 
-Base.prototype.showName = function() { 
-    console.log(this.name);
-}; 
-function Sub() { 
-    this.name = 'sub'; 
-} 
-util.inherits(Sub, Base); //继承
-var objBase = new Base(); 
-objBase.showName(); //base 
-objBase.sayHello(); //Hello base 
-console.log(objBase); //{ name: 'base', base: 1991, sayHello: [Function] } 
-var objSub = new Sub(); 
-objSub.showName(); //sub
-//objSub.sayHello(); 
-console.log(objSub); //{ name: 'sub' }
+var http = require("http");
+var url = require("url");
+var server = http.createServer(function (req, res) {
+    var queryObj = url.parse(req.url, true).query;
+    var username = queryObj.username;
+    var password = queryObj.password;
+
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.write('server received form request:\n\n');
+    res.write('username:'+username+'\n\n'+'password:'+password);
+    res.end();
+});
+server.listen(3000);
