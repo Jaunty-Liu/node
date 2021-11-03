@@ -1,4 +1,5 @@
-var server = require("./2");
-var router = require("./1");
- 
-server.start(router.route);
+function main(argv) {
+    console.log(argv)
+  }
+          
+  main(process.argv)
