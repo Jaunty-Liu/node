@@ -1,15 +1,18 @@
 var express=require('express');
 var app=express();
-app.param(['id', 'page'], function(req, res, next, value) {
-  console.log('param',value);
-  next();
+var admin = express();
+
+admin.get('/', function (req, res) {
+  console.log(admin.mountpath); // [ '/adm*n', '/manager' ]
+  res.send('Admin Homepage');
 });
-app.get('/user/:id/:page', function(req, res, next) {
-  console.log('get1',req.params);
-  next();
+
+var secret = express();
+secret.get('/', function (req, res) {
+  console.log(secret.mountpath); // /secr*t
+  res.send('Admin Secret');
 });
-app.get('/user/:id/:page', function (req, res, next) {
-  console.log('get2',req.params);
-  res.end();
-});
-app.listen(3000);
+
+admin.use('/secr*t', secret); // load the 'secret' router on '/secr*t', on the 'admin' sub app
+app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
+app.listen(8080);
