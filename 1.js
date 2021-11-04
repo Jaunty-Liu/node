@@ -1,10 +1,7 @@
-var express=require('express');
-var app = express()
-, blog = express()
-, blogAdmin = express();
-app.use('/blog', blog);
-blog.use('/admin', blogAdmin);
-console.log(app.path()); // ''
-console.log(blog.path()); // '/blog'
-console.log(blogAdmin.path()); // '/blog/admin'
-app.listen(8080);
+var express = require('express'); 
+var app = express(); 
+var PORT = 3000; 
+  
+// View engine setup 
+app.set('Batman', 'redhood'); 
+console.log(app.get('Batman'));
