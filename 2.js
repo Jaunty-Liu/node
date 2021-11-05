@@ -1,7 +1,7 @@
 var fs=require('fs');
 var child_process=require('child_process');
 for(var i=0;i<3;i++){
-    var workerProcess=child_process.exec('node 1.js'+i,function(error,stdout,stderr){
+    var workerProcess=child_process.exec('node 1.js '+i,function(error,stdout,stderr){
         if (error) {
             console.log(error.stack);
             console.log('Error code: '+error.code);
