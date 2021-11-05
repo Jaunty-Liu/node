@@ -1,17 +1,16 @@
-var http=require('http');
-var options={
-    host:'127.0.0.1',
-    port:'3000',
-    path:'/1.html'
-}
-var callback=(res)=>{   
-    var body='';
-    res.on('data',(chunk)=>{
-        body+=chunk;
+var fs=require('fs');
+var child_process=require('child_process');
+for(var i=0;i<3;i++){
+    var workerProcess=child_process.exec('node 1.js'+i,function(error,stdout,stderr){
+        if (error) {
+            console.log(error.stack);
+            console.log('Error code: '+error.code);
+            console.log('Signal received: '+error.signal);
+        }
+        console.log('stdout'+stdout);
+        console.log('stderr'+stderr);
     });
-    res.on('end',()=>{
-        console.log(body);
+    workerProcess.on('exit',function(code){
+        console.log('子程序已退出，退出码'+code);
     });
 }
-var req=http.request(options,callback);
-req.end();
